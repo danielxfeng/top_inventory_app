@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { updateDepart } from "../controllers/departController.mjs";
 //import { getDeparts, addDepart, updateDepart, deleteDepart } from "../controllers/departController.mjs";
 //import { getNationalities, addNationality, updateNationality, deleteNationality } from "../controllers/nationalityController.mjs";
 //import { getStudents, addStudent, updateStudent, deleteStudent } from "../controllers/studentController.mjs";
@@ -11,7 +12,9 @@ appRouter.get("/", (req, res) => {
 });
 
 appRouter.get("/departs", getDeparts);
-appRouter.post("/departs", addDepart);
+appRouter.get("/departs/create", addDepartForm);
+appRouter.post("/departs/create", addDepart);
+appRouter.get("/departs/:id", updateDepartForm);
 appRouter.put("/departs/:id", updateDepart);
 appRouter.delete("/departs/:id", deleteDepart);
 

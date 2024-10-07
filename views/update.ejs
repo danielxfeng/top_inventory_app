@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head.ejs", { title: title }) %>
+  <body>
+    <%- include("partials/header.ejs", { title: title }) %>
+    <main>
+      <h1><%= title %></h1>
+      <% if (errors && errors.length > 0) { %>
+        <%-include("partials/error.ejs", { errors: errors }) %>
+      <% } %>
+      <div>
+        <form action="<%= `/${link}/${data.id}` %>" method="post">
+          <input type="hidden" name="_method" value="PUT" />
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="<%= data.name %>" required />
+          </div>
+          <div>
+            <button type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

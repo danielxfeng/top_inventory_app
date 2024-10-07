@@ -6,7 +6,7 @@
     <main>
       <h1><%= title %></h1>
       <div>
-        <% if (errors && errors.length > 0) { %>
+        <% if (locals.errors && errors.length > 0) { %>
           <%-include("partials/error.ejs", { errors: errors }) %>
         <% } %>
         <% if (data && data.length > 0) { %>
@@ -32,7 +32,6 @@
                 <a href="<%= `/${link}/update/${row.id}` %>">Update</a>
                 <form action="<%= `/${link}/${row.id}` %>" method="POST">
                   <input type="hidden" name="_method" value="DELETE">
-                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <button type="submit">Delete</button>
                 </form>
               </td>

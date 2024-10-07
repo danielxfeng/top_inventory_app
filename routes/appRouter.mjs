@@ -1,9 +1,14 @@
 import { Router } from "express";
-import { updateDepart } from "../controllers/departController.mjs";
-//import { getDeparts, addDepart, updateDepart, deleteDepart } from "../controllers/departController.mjs";
+import {
+  getDeparts,
+  addDepartForm,
+  addDepart,
+  updateDepartForm,
+  updateDepart,
+  deleteDepart,
+} from "../controllers/departController.mjs";
 //import { getNationalities, addNationality, updateNationality, deleteNationality } from "../controllers/nationalityController.mjs";
 //import { getStudents, addStudent, updateStudent, deleteStudent } from "../controllers/studentController.mjs";
-
 
 const appRouter = Router();
 
@@ -11,12 +16,12 @@ appRouter.get("/", (req, res) => {
   res.render("index", { title: "Fancy Inventory App" });
 });
 
-appRouter.get("/departs", getDeparts);
-appRouter.get("/departs/create", addDepartForm);
-appRouter.post("/departs/create", addDepart);
-appRouter.get("/departs/:id", updateDepartForm);
-appRouter.put("/departs/:id", updateDepart);
-appRouter.delete("/departs/:id", deleteDepart);
+appRouter.get("/depart", getDeparts);
+appRouter.get("/depart/create", addDepartForm);
+appRouter.post("/depart/create", addDepart);
+appRouter.get("/depart/:id", updateDepartForm);
+appRouter.put("/depart/:id", updateDepart);
+appRouter.delete("/depart/:id", deleteDepart);
 
 /**
 appRouter.get("/nationalities", getNationalities);
@@ -29,6 +34,5 @@ appRouter.post("/students", addStudent);
 appRouter.put("/students/:id", updateStudent);
 appRouter.delete("/students/:id", deleteStudent);
 */
-
 
 export default appRouter;

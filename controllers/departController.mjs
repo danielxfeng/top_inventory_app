@@ -11,14 +11,17 @@ const departValidation = [
 ];
 
 const getDeparts = async (req, res) => {
+  console.log("here");
   try {
     const result = await db.readAllDeparts();
+    
     res.render("read", {
       title: "Depart Management",
       link: "depart",
       data: result.rows,
     });
   } catch (err) {
+    console.log("err", err);
     res.status(500).send(err);
   }
 };
@@ -41,7 +44,7 @@ const addDepart = [
     const { name } = req.body;
     try {
       await db.createDepart(name);
-      res.redirect("/departs");
+      res.redirect("/depart");
     } catch (err) {
       res.status(500).send(err);
     }
@@ -99,7 +102,7 @@ const updateDepart = [
     const { name } = req.body;
     try {
       await db.updateDepart(id, name);
-      res.redirect("/departs");
+      res.redirect("/depart");
     } catch (err) {
       res.status(500).send(err);
     }
@@ -109,11 +112,11 @@ const updateDepart = [
 const deleteDepart = async (req, res) => {
   const id = req.params.id;
   if (!id) {
-    return res.status(400).redirect("/departs");
+    return res.status(400).redirect("/depart");
   }
   try {
     await db.deleteDepart(id);
-    res.redirect("/departs");
+    res.redirect("/depart");
   } catch (err) {
     res.status(500).send(err);
   }

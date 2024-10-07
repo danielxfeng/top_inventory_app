@@ -19,9 +19,9 @@ appRouter.get("/", (req, res) => {
 appRouter.get("/depart", getDeparts);
 appRouter.get("/depart/create", addDepartForm);
 appRouter.post("/depart/create", addDepart);
-appRouter.get("/depart/:id", updateDepartForm);
-appRouter.put("/depart/:id", updateDepart);
-appRouter.delete("/depart/:id", deleteDepart);
+appRouter.get("/depart/update/:id", updateDepartForm);
+appRouter.put("/depart/update/:id", updateDepart);
+appRouter.delete("/depart/delete/:id", deleteDepart);
 
 /**
 appRouter.get("/nationalities", getNationalities);

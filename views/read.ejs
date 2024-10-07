@@ -30,8 +30,8 @@
               <% }) %>
               <td>
                 <a href="<%= `/${link}/update/${row.id}` %>">Update</a>
-                <form action="<%= `/${link}/${row.id}` %>" method="POST">
-                  <input type="hidden" name="_method" value="DELETE">
+                <form action="<%= `/${link}/delete/${row.id}?_method=DELETE` %>" method="POST">
+                  <input type="hidden" name="_method" value="">
                   <button type="submit">Delete</button>
                 </form>
               </td>

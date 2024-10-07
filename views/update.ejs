@@ -9,8 +9,7 @@
         <%-include("partials/error.ejs", { errors: errors }) %>
       <% } %>
       <div>
-        <form action="<%= `/${link}/${data.id}` %>" method="post">
-          <input type="hidden" name="_method" value="PUT" />
+        <form action="<%= `/${link}/update/${data.id}?_method=PUT` %>" method="post">
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<%= data.name %>" required />

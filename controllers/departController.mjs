@@ -11,7 +11,6 @@ const departValidation = [
 ];
 
 const getDeparts = async (req, res) => {
-  console.log("here");
   try {
     const result = await db.readAllDeparts();
     

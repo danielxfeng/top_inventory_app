@@ -15,7 +15,7 @@ const getNationalities = async (req, res) => {
     const result = await db.readAllNationalities();
 
     res.render("read", {
-      title: "nationality Management",
+      title: "Nationality Management",
       link: "nationality",
       data: result.rows,
     });

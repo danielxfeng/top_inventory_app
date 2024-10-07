@@ -15,7 +15,14 @@ import {
   updateNationality,
   deleteNationality,
 } from "../controllers/nationalityController.mjs";
-//import { getStudents, addStudent, updateStudent, deleteStudent } from "../controllers/studentController.mjs";
+import {
+  getStudents,
+  addStudentForm,
+  addStudent,
+  updateStudentForm,
+  updateStudent,
+  deleteStudent,
+} from "../controllers/studentController.mjs";
 
 const appRouter = Router();
 
@@ -37,11 +44,11 @@ appRouter.get("/nationality/update/:id", updateNationalityForm);
 appRouter.put("/nationality/update/:id", updateNationality);
 appRouter.delete("/nationality/delete/:id", deleteNationality);
 
-/** 
-appRouter.get("/students", getStudents);
-appRouter.post("/students", addStudent);
-appRouter.put("/students/:id", updateStudent);
-appRouter.delete("/students/:id", deleteStudent);
-*/
+appRouter.get("/student", getStudents);
+appRouter.get("/student/create", addStudentForm);
+appRouter.post("/student/create", addStudent);
+appRouter.get("/student/update/:id", updateStudentForm);
+appRouter.put("/student/update/:id", updateStudent);
+appRouter.delete("/student/delete/:id", deleteStudent);
 
 export default appRouter;

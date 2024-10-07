@@ -66,12 +66,25 @@ const Db = () => {
   };
 
   const readAllStudents = async () => {
-    const query = "SELECT * FROM students";
+    const query = `
+      SELECT s.id AS id, s.name AS name, s.depart_id, d.name AS depart_name,
+             s.nationality_id, n.name AS nationality_name
+      FROM students AS s
+      JOIN departs AS d ON s.depart_id = d.id
+      JOIN nationalities AS n ON s.nationality_id = n.id;
+    `;
     return await runQuery(query);
   };
 
   const readStudentById = async (id) => {
-    const query = "SELECT * FROM students WHERE id = $1";
+    const query = `
+      SELECT s.id AS id, s.name AS name, s.depart_id, d.name AS depart_name,
+             s.nationality_id, n.name AS nationality_name
+      FROM students AS s
+      JOIN departs AS d ON s.depart_id = d.id
+      JOIN nationalities AS n ON s.nationality_id = n.id
+      WHERE s.id = $1;
+    `;
     return await runQuery(query, [id]);
   };
 
@@ -81,8 +94,9 @@ const Db = () => {
     return await runQuery(query, [name, departId, nationalityId]);
   };
 
-  const updateStudent = async (id, name, departId, nationalityId ) => {
-    const query = "UPDATE students SET name = $2 departId = $3 nationalityId = $4 WHERE id = $`";
+  const updateStudent = async (id, name, departId, nationalityId) => {
+    const query =
+      "UPDATE students SET name = $2, depart_id = $3, nationality_id = $4 WHERE id = $1";
     return await runQuery(query, [id, name, departId, nationalityId]);
   };
 
@@ -107,7 +121,7 @@ const Db = () => {
     createStudent,
     updateStudent,
     deleteStudent,
-  }
+  };
 };
 
 export default Db();

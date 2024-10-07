@@ -14,16 +14,16 @@
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
             <% if (link === "student") {%>
-            <label for="depart">Depart</label>
-            <select id="depart" name="depart" required>
+            <label for="depart_id">Depart</label>
+            <select id="depart_id" name="depart_id" required>
               <% departs.forEach(depart => { %>
               <option value="<%= depart.id %>">
                 <%= depart.name %>
               </option>
               <% }) %>
             </select>
-            <label for="nationality">Nationality</label>
-            <select id="nationality" name="nationality" required>
+            <label for="nationality_id">Nationality</label>
+            <select id="nationality_id" name="nationality_id" required>
               <% nationalities.forEach(nationality => { %>
               <option value="<%= nationality.id %>">
                 <%= nationality.name %>

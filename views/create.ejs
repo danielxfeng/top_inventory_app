@@ -5,15 +5,32 @@
     <%- include("partials/header.ejs", { title: title }) %>
     <main>
       <h1><%= title %></h1>
-      <% if (errors && errors.length > 0) { %>
-        <%-include("partials/error.ejs", { errors: errors }) %>
-      <% } %>
+      <% if (errors && errors.length > 0) { %> <%-include("partials/error.ejs",
+      { errors: errors }) %> <% } %>
       <div>
         <form action="<%= `/${link}/create` %>" method="post">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
+            <% if (link === "student") {%>
+            <label for="depart">Depart</label>
+            <select id="depart" name="depart" required>
+              <% departs.forEach(depart => { %>
+              <option value="<%= depart.id %>">
+                <%= depart.name %>
+              </option>
+              <% }) %>
+            </select>
+            <label for="nationality">Nationality</label>
+            <select id="nationality" name="nationality" required>
+              <% nationalities.forEach(nationality => { %>
+              <option value="<%= nationality.id %>">
+                <%= nationality.name %>
+              </option>
+              <% }) %>
+            </select>
+            <% } %>
           </div>
           <div>
             <button type="submit">Create</button>

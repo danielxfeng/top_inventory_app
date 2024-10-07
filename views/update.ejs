@@ -15,6 +15,28 @@
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<%= data.name %>" required />
+            <% if (link === "student") {%>
+                <label for="depart">Depart</label>
+                <select id="depart" name="depart" required>
+                  <% departs.forEach(depart => { %>
+                  <option
+                    value="<%= depart.id %>" 
+                    <%= depart.id === departId ? 'selected' : '' %>>
+                    <%= depart.name %>
+                  </option>
+                  <% }) %>
+                </select>
+                <label for="nationality">Nationality</label>
+                <select id="nationality" name="nationality" required>
+                  <% nationalities.forEach(nationality => { %>
+                  <option 
+                    value="<%= nationality.id %>" 
+                    <%= nationality.id === nationalityId ? 'selected' : '' %>>
+                    <%= nationality.name %>
+                  </option>
+                  <% }) %>
+                </select>
+                <% } %>
           </div>
           <div>
             <button type="submit">Update</button>

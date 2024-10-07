@@ -56,7 +56,7 @@ const Db = () => {
   };
 
   const deleteNationality = async (id) => {
-    const queryStudent = "SELECT id FROM students WHERE nationalities_id = $1";
+    const queryStudent = "SELECT id FROM students WHERE nationality_id = $1";
     const student = await runQuery(queryStudent, [id]);
     if (student.rows.length > 0) {
       throw new Error("Cannot delete a nationality that has students.");

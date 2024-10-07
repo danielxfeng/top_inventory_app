@@ -56,12 +56,12 @@ const Db = () => {
   };
 
   const deleteNationality = async (id) => {
-    const queryStudent = "SELECT id FROM students WHERE nationality_id = $1";
+    const queryStudent = "SELECT id FROM students WHERE nationalities_id = $1";
     const student = await runQuery(queryStudent, [id]);
     if (student.rows.length > 0) {
       throw new Error("Cannot delete a nationality that has students.");
     }
-    const query = "DELETE FROM nationality WHERE id = $1";
+    const query = "DELETE FROM nationalities WHERE id = $1";
     return await runQuery(query, [id]);
   };
 
@@ -81,9 +81,9 @@ const Db = () => {
     return await runQuery(query, [name, departId, nationalityId]);
   };
 
-  const updateStudent = async (id, name) => {
-    const query = "UPDATE students SET name = $1 WHERE id = $2";
-    return await runQuery(query, [name, id]);
+  const updateStudent = async (id, name, departId, nationalityId ) => {
+    const query = "UPDATE students SET name = $2 departId = $3 nationalityId = $4 WHERE id = $`";
+    return await runQuery(query, [id, name, departId, nationalityId]);
   };
 
   const deleteStudent = async (id) => {

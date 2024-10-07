@@ -10,12 +10,12 @@ appRouter.get("/", (req, res) => {
   res.render("index", { title: "Fancy Inventory App" });
 });
 
-/** 
 appRouter.get("/departs", getDeparts);
 appRouter.post("/departs", addDepart);
 appRouter.put("/departs/:id", updateDepart);
 appRouter.delete("/departs/:id", deleteDepart);
 
+/**
 appRouter.get("/nationalities", getNationalities);
 appRouter.post("/nationalities", addNationality);
 appRouter.put("/nationalities/:id", updateNationality);

@@ -2,17 +2,18 @@ import pgs from "pg";
 import dotenv from "dotenv";
 
 const { Pool } = pgs;
-const env = dotenv.config().parsed;
+dotenv.config();
 
 const pool = new Pool({
-  host: env.DB_HOST,
-  user: env.DB_USER,
-  database: env.DB_NAME,
-  password: env.DB_PASS,
-  port: env.DB_PORT,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
+  ssl:
+  process.env.NODE_ENV === "production"
+    ? { rejectUnauthorized: false }
+    : false,
 });
 
 export default pool;

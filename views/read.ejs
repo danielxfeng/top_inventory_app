@@ -17,7 +17,7 @@
           <thead>
             <tr>
               <% Object.keys(data[0]).forEach(key => { %>
-              <th><%= key %></th>
+              <th class="<%= key %>"><%= key %></th>
               <% }) %>
               <th>Actions</th>
             </tr>
@@ -25,12 +25,13 @@
           <tbody>
             <% data.forEach(row => { %>
             <tr>
-              <% Object.values(row).forEach(value => { %>
-              <td><%= value %></td>
+              <% const rowId = row.id; %>
+              <% Object.entries(row).forEach(([key, value]) => { %>
+              <td class="<%= key %>"><%= value %></td>
               <% }) %>
               <td>
-                <a href="<%= `/${link}/update/${row.id}` %>">Update</a>
-                <form action="<%= `/${link}/delete/${row.id}?_method=DELETE` %>" method="POST">
+                <a href="<%= `/${link}/update/${rowId}` %>">Update</a>
+                <form action="<%= `/${link}/delete/${rowId}?_method=DELETE` %>" method="POST">
                   <input type="hidden" name="_method" value="">
                   <button type="submit">Delete</button>
                 </form>

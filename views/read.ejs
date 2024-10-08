@@ -29,7 +29,7 @@
               <% Object.entries(row).forEach(([key, value]) => { %>
               <td class="<%= key %>"><%= value %></td>
               <% }) %>
-              <td>
+              <td class="actions">
                 <a href="<%= `/${link}/update/${rowId}` %>">Update</a>
                 <form action="<%= `/${link}/delete/${rowId}?_method=DELETE` %>" method="POST">
                   <input type="hidden" name="_method" value="">
